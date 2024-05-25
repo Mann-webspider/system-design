@@ -6,10 +6,11 @@ it motivates me to become better engineer and it will help me to revise the topi
 
 
 ## Table of Contents
- - **Getting Started**
+1. **Getting Started**
 
     - [What is System design?](#what-is-system-design-)
     - [How you approach system design?](#how-you-approach-system-design)
+2. **Relational Database**
     - [Relational Database ACID](#relational-database)
     - [Isolation Levels](#isolation-levels-database)
 
@@ -117,3 +118,23 @@ _________________________
 
 ## Isolation Levels Database
 
+Relational Database provides ACID gurantee and **"I"** in ACID is "Isolation" and isolation level helps us tune them
+
+Isolation Levels dictate how much one transaction knowns about the other.
+
+we look at each one of them and understand with example
+
+***@Repeatable Reads***
+*Consistent reads within Same transaction*
+
+Even if other transaction commited 1st transaction would not see the changes (If already reads)
+
+***@Read commited***
+*Reads within the ame transaction always reads fresh value*
+
+***@Read Uncommited***
+*Reads even uncommited values from other transaction*
+(Dirty reads)
+
+***@Serializable***
+*Every Reads is a locking read and while one transaction reads, other will have to wait.*
