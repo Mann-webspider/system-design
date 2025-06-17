@@ -10,9 +10,21 @@ it motivates me to become better engineer and it will help me to revise the topi
 
     - [What is System design?](#what-is-system-design-)
     - [How you approach system design?](#how-you-approach-system-design)
+2. **HTTP & APIs**
+    - [REST vs GraphQL vs GRPC ](./HTTP%20&%20APIs/README.md/#REST%20API)
+
+    - [Web Socket vs AMQP](./HTTP%20&%20APIs/README.md/#WebSocket%20vs%20AMQP)
+
+    - [HTTP methods: GET, POST, PUT, DELETE](./HTTP%20&%20APIs/README.md/#HTTP%20Methods)
+
+    - [Status codes (200, 400, 401, 404, 500)](./HTTP%20&%20APIs/README.md/#Http%20status%20Code)
+
+    - [Idempotation](./HTTP%20&%20APIs/README.md/#Idempotation)
+
+    - [API versioning](./HTTP%20&%20APIs/README.md/#API%20Versioning)
 2. **Relational Database**
-    - [Relational Database ACID](#relational-database)
-    - [Isolation Levels](#isolation-levels-database)
+    - [Relational Database ACID](./Relational%20Database/README.md/#relational-database)
+    - [Isolation Levels](./Relational%20Database/README.md/#isolation-levels-database)
 
 
 ## What is System design ?
@@ -88,53 +100,3 @@ For each sub-component think about
 - communication
 
 ________________________________________________________________________________
-
-## Relational Database
-Database are most critical components of any system, they make or break the system
-Data is stored & represented in rows and columns
-Database uses **ACID** properties for transations 
-
-- Atomicity
-- Consistency
-- Isolation
-- Durability
-
-**Atomicity** All Statement within a transaction takes effect or none
-
-- Whenever transaction happens all the changes should take place if one of the statement is faulty then whole process of transaction will fail
-
-**Consistency** Data will never go incorrect , no matter what
-
--   You have the necessary tools to ensure your data never goes inconsistent
-
-**Isolation** 
-When multiple tranaction are executing parrallely, the isolation level determines how much changes of one transaction are visible to other
-
-
-***Exercise***
-[ACID properties practise](./Relational%20Database/README.md)
-
-_________________________
-
-## Isolation Levels Database
-
-Relational Database provides ACID gurantee and **"I"** in ACID is "Isolation" and isolation level helps us tune them
-
-Isolation Levels dictate how much one transaction knowns about the other.
-
-we look at each one of them and understand with example
-
-***@Repeatable Reads***
-*Consistent reads within Same transaction*
-
-Even if other transaction commited 1st transaction would not see the changes (If already reads)
-
-***@Read commited***
-*Reads within the ame transaction always reads fresh value*
-
-***@Read Uncommited***
-*Reads even uncommited values from other transaction*
-(Dirty reads)
-
-***@Serializable***
-*Every Reads is a locking read and while one transaction reads, other will have to wait.*

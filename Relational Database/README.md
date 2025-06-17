@@ -1,117 +1,52 @@
-# Relational Database Practical
 
-## excercise
+## Relational Database
+Database are most critical components of any system, they make or break the system
+Data is stored & represented in rows and columns
+Database uses **ACID** properties for transations 
 
-1. Setup a SQL database (mysql or postgres)
-2. create a Schema For  social network ( Users . Post , Profile , Photos, following)
-3. Insert Data in (User and profile) in one transaction
-
-
-### Lets setup the sql database
-
-let me use Docker to spin up the postgres container and open the terminal init
-
-```docker
-docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres
-```
-
-After the docker instance is running, enter to the docker terminal using this command
-```docker
-docker exec -it some-postgres psql -U postgres
-```
-
-### Create database and schema for social network
-**Create Database**
-```sql
---create a database name social network
-CREATE DATABASE social_network;
-```
-**connect to databse**
-```sql
-\c social_network;
-```
-
-
-#### **create tables**
-**Users Table**
-```sql
--- Create Users Table
-CREATE TABLE Users (
-    id SERIAL PRIMARY KEY,
-    username VARCHAR(50) NOT NULL UNIQUE,
-    email VARCHAR(100) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-```
-
-**Profiles Table**
-```sql
--- Create Profiles Table
-CREATE TABLE Profiles (
-    user_id INT PRIMARY KEY,
-    first_name VARCHAR(50),
-    last_name VARCHAR(50),
-    bio TEXT,
-    profile_pic_url VARCHAR(255),
-    FOREIGN KEY (user_id) REFERENCES Users(id)
-);
-``` 
+- Atomicity
+- Consistency
+- Isolation
+- Durability
 
 
 
-### Insert data into users and Profiles in One Transaction
+**Atomicity** All Statement within a transaction takes effect or none
 
-Making data insert with transaction 
+- Whenever transaction happens all the changes should take place if one of the statement is faulty then whole process of transaction will fail
 
-**Sucessfull transaction**
-```sql
-START TRANSACTION;
+**Consistency** Data will never go incorrect , no matter what
 
--- Insert into Users table
-INSERT INTO Users (username, email, password)
-VALUES ('johndoe', 'johndoe@example.com', 'password123') 
-RETURNING id INTO user_id;
+-   You have the necessary tools to ensure your data never goes inconsistent
 
--- Insert into Profiles table
-INSERT INTO Profiles (user_id, first_name, last_name, bio, profile_pic_url)
-VALUES (user_id, 'John', 'Doe', 'Hello, I am John Doe!', 'http://example.com/johndoe.jpg');
+**Isolation** 
+When multiple tranaction are executing parrallely, the isolation level determines how much changes of one transaction are visible to other
 
-COMMIT;
 
-```
-***output***
-```sql
-BEGIN
-INSERT 0 1
-COMMIT
-``` 
-**Failing transaction**
-```sql
-BEGIN;
+***Exercise***
+[ACID properties practise](./practical/README.md)
 
--- Insert into Users table with a duplicate username
-WITH inserted_user AS (
-    INSERT INTO Users (username, email, password)
-    VALUES ('johndoe', 'johndoe2@example.com', 'password123')
-    RETURNING id
-)
--- Attempt to insert into Profiles table
-INSERT INTO Profiles (user_id, first_name, last_name, bio, profile_pic_url)
-SELECT id, 'John', 'Doe', 'Hello, I am John Doe again!', 'http://example.com/johndoe2.jpg'
-FROM inserted_user;
+_________________________
 
-COMMIT;
+## Isolation Levels Database
 
-```
+Relational Database provides ACID gurantee and **"I"** in ACID is "Isolation" and isolation level helps us tune them
 
-***Output***
-```
-ERROR:  duplicate key value violates unique constraint "users_username_key"
-DETAIL:  Key (username)=(johndoe) already exists.
-ROLLBACK
-```
+Isolation Levels dictate how much one transaction knowns about the other.
 
-If any part of the transaction fails (e.g., inserting a duplicate username), the entire transaction is rolled back. No partial data will be committed to the database, ensuring data integrity.
+we look at each one of them and understand with example
 
-This approach ensures that your database remains consistent even in the face of errors.
+***@Repeatable Reads***
+*Consistent reads within Same transaction*
+
+Even if other transaction commited 1st transaction would not see the changes (If already reads)
+
+***@Read commited***
+*Reads within the ame transaction always reads fresh value*
+
+***@Read Uncommited***
+*Reads even uncommited values from other transaction*
+(Dirty reads)
+
+***@Serializable***
+*Every Reads is a locking read and while one transaction reads, other will have to wait.*
