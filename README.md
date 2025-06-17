@@ -15,7 +15,7 @@ it motivates me to become better engineer and it will help me to revise the topi
 
     - [Web Socket vs AMQP](./HTTP%20&%20APIs/README.md/#WebSocket%20vs%20AMQP)
 
-    - [HTTP methods: GET, POST, PUT, DELETE](./HTTP%20&%20APIs/README.md/#HTTP%20Methods)
+    - [HTTP methods: GET, POST, PUT, DELETE](./HTTP%20&%20APIs/README.md/#HTTP-Methods)
 
     - [Status codes (200, 400, 401, 404, 500)](./HTTP%20&%20APIs/README.md/#Http%20status%20Code)
 

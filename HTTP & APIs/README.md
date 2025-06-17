@@ -1,3 +1,15 @@
+# Table of content 
+  - [REST vs GraphQL vs GRPC ](#REST-API)
+
+  - [Web Socket vs AMQP](#WebSocket-vs-AMQP)
+
+  - [HTTP methods: GET, POST, PUT, DELETE](#HTTP-Methods)
+
+  - [Status codes (200, 400, 401, 404, 500)](#Http-status-Code)
+
+  - [Idempotation](#Idempotation)
+
+  - [API versioning](#API-Versioning)
 # REST vs GraphQL vs GRPC
 ## REST API
 Okay, imagine you have a database of products, right? Like phones, laptops, all that stuff. Now you want your website or mobile app to talk to that database — but obviously, you don’t want to give direct access. That’s risky.
