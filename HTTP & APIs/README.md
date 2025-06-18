@@ -11,16 +11,21 @@
 
   - [API versioning](#API-Versioning)
 # REST vs GraphQL vs GRPC
+<br/>
+
 ## REST API
 Okay, imagine you have a database of products, right? Like phones, laptops, all that stuff. Now you want your website or mobile app to talk to that database — but obviously, you don’t want to give direct access. That’s risky.
 
 So instead, you create an API — it’s like a middleman. And when it follows certain rules using standard HTTP stuff — like GET, POST, PUT, DELETE — we call it a REST API.
+<br/>
+![rest api images](./images/rest.png)
 
 ###  What is a REST API?
 
 REST (Representational State Transfer) is an architectural style for building web services that use standard HTTP methods (GET, POST, PUT, DELETE) to perform CRUD operations on resources.
 
 A REST API allows clients (browsers, mobile apps, other servers) to interact with data stored on a server via HTTP endpoints.
+<br/>
 
 ### How it works 
 Let’s say you want to get a list of all products. You just send a GET request to /products, and boom — the API responds with a list in JSON format.
@@ -30,16 +35,13 @@ Need to update one? Use PUT /products/5.
 Want to delete one? DELETE /products/5.
 
 It's just URLs + HTTP methods — that's it!
-
+<br/>
 
 ### So when should you actually use REST?
 If you’re building something like:
 - a blog
-
 - an e-commerce backend
-
 - an admin dashboard
-
 - a public API for others to use
 
 then REST is a perfect fit.
@@ -48,8 +50,8 @@ then REST is a perfect fit.
 ------------------------------------------------------
 
 ## GraphQL
-
-🧠 First, what is GraphQL?
+![graphql images](./images/graphql.png)
+###  First, what is GraphQL?
 GraphQL is basically a new way of asking for data from your backend. It was created by Facebook because REST was getting annoying for big apps like Facebook itself.
 
 You know how in REST, you hit /products and you get a whole product object whether you want all of it or not? And then if you want related stuff — like reviews or seller info — you have to make multiple requests? That’s the pain point GraphQL fixes.
@@ -122,9 +124,8 @@ service UserService {
 }
 ```
 1. You generate code in any language (Go, Node, Java, etc.)
-
 2. You call methods directly — like you're calling a function — no need to build URLs or handle HTTP manually.
-
+<br/>
 
 ### ✅ Advantages
 - Super fast (binary > JSON)
@@ -134,6 +135,7 @@ service UserService {
 - Built-in support for streaming
 
 - Great for microservices or real-time comms
+<br/>
 
 ### ❌ Disadvantages
 - If you're building a public API — REST is easier to consume
@@ -141,6 +143,7 @@ service UserService {
 - Not easily testable in browser (needs special tools)
 
 - Harder to debug compared to REST or GraphQL
+<br/>
 
 ###  When to use:
 - Service-to-service communication
@@ -148,6 +151,7 @@ service UserService {
 - Real-time systems
 
 - Internal systems where you want max speed
+<br/>
 
 **So REST is easy, GraphQL is flexible, and gRPC is fast?**
 
@@ -170,6 +174,7 @@ const socket = new WebSocket("wss://example.com/socket");
 ```
 2. Server accepts it and both stay connected.
 3. Now they can send/receive messages instantly.
+<br/>
 
 ### When to use ?
 - Real-time chat apps 
@@ -179,6 +184,7 @@ const socket = new WebSocket("wss://example.com/socket");
 - Multiplayer games 
 
 - Stock price updates 
+<br/>
 
 ### When not to use?
 - For simple CRUD or static data — REST is better
@@ -186,10 +192,13 @@ const socket = new WebSocket("wss://example.com/socket");
 - If you don’t need live updates — it’s overkill
 
 - Needs more setup: connection handling, retries, etc.
+<br/>
+
 -------------------------------
 ## AMQP stands for Advanced Message Queuing Protocol.
 It’s a protocol that lets services send messages to each other asynchronously, using queues.
 The most popular tool that uses AMQP? 👉 
+<br/>
 
 ### How it works
 Let’s say:
@@ -203,17 +212,20 @@ With AMQP:
 - B listens to that queue and sends the email
 
 They don’t talk directly — the message broker (like RabbitMQ) handles delivery.
+<br/>
 
 ### when to use 
 - Decouples services (less tightly connected)
 - Great for background tasks (emails, logs, billing)
 - Built-in retry, acknowledgement, durability
 - Handles spikes in traffic easily
+<br/>
 
 ### Wnen not to use
 - When you need real-time 2-way comms → use WebSocket
 - For simple request/response → use REST
 - Setup is a bit more involved (need RabbitMQ server, etc.)
+<br/>
 
 
 # HTTP Methods

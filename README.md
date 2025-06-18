@@ -22,7 +22,13 @@ it motivates me to become better engineer and it will help me to revise the topi
     - [Idempotation](./HTTP%20&%20APIs/README.md/#Idempotation)
 
     - [API versioning](./HTTP%20&%20APIs/README.md/#API%20Versioning)
-2. **Relational Database**
+
+3. **Architecture**
+    - [Client Server Architecture](./Architectures/README.md/#client-server-architecture)
+    - [Event driven Architecture](./Architectures/README.md/#event-driven-architechture-eda)
+
+
+4. **Relational Database**
     - [Relational Database ACID](./Relational%20Database/README.md/#relational-database)
     - [Isolation Levels](./Relational%20Database/README.md/#isolation-levels-database)
 
