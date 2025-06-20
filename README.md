@@ -27,6 +27,13 @@ it motivates me to become better engineer and it will help me to revise the topi
     - [Client Server Architecture](./Architectures/README.md/#client-server-architecture)
     - [Event driven Architecture](./Architectures/README.md/#event-driven-architechture-eda)
 
+4. **Databases**
+    - [What is Database and DBMS](./Database/README.md/#what-is-database)
+    - [Relational (MySQL, PostgreSQL)](./Database/README.md/#relational-database)
+
+    - [NoSQL (MongoDB, DynamoDB, Cassandra)](./Database/README.md/#non-relational-database)
+
+    - [When to use SQL vs NoSQL](./Database/README.md/#when-to-use-sql-vs-nosql)
 
 4. **Relational Database**
     - [Relational Database ACID](./Relational%20Database/README.md/#relational-database)
